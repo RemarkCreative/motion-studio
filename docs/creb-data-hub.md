@@ -43,6 +43,21 @@ CMA tip from the video: set comparison line 2 to the month the client **bought**
 - **Export**: print to PDF or **export CSV**. Side search jumps to a location or an indicator.
 - The old prepared stats packages and self-serve tables are still there; the Hub is in addition to them. More modules are coming.
 
+## Screen map (from a frame-by-frame video analysis)
+
+AI scene analysis of the 38-min video, so treat as approximate. Confirm against the live site when the login skill is built.
+
+1. **Landing page (Data Hub home):** tiles top left: **Housing Snapshot**, **Map Comparison**, then **COMING SOON** and **SUBMIT YOUR FEEDBACK**. Right side links: *Daily view into market activity*, *CREB® provided monthly and quarterly statistical packages*, *Self Serve Data Tables*, *Understanding Stats*. Later menu items seen: **Location Comparison**, **Data Request**.
+2. **Housing Snapshot** opens a grey region map (selected area highlighted orange; clicked map sectors turn blue) with a pop-up **"Summary Report: Total Residential"** box. Rows: Benchmark Price, Sales, New Listings, Inventory, Months of Supply, Days on Market, Dollar Volume, Sales/List Price ratio. Click outside the box to close it.
+3. **Location:** click the location name (default **"Calgary"**) to get a dropdown and search (e.g. typing "Lakeview"). Or click a sector on the map.
+4. **Property type:** click **"Total Residential"** at the top of the box for Detached / Semi-Detached / Row / Apartment.
+5. **Date:** click the date (e.g. **"Apr 2026"**) to pick a month. **Growth Frequency** setting: Monthly / Quarterly / Annual / Month-To-Date / Year-To-Date, plus year, then **Save Changes**. The second comparison date is set in the same panel (e.g. July 2013).
+6. **Price:** click the price filter (default **"$0 - $999,999,999"**) and tick consecutive brackets such as "$500,000 - $599,999", "$600,000 - $699,999", "$1,000,000 and above".
+7. **Indicator detail:** the small **arrow next to Benchmark Price** expands to Average Price and Median Price. **Click an indicator name** for its chart (default Jan 2016 to now), a **time slider above the chart**, and a **line/bar toggle at the chart's top right** (bars are orange).
+8. **Quick Comparison:** the **small arrow at the bottom right of the summary box** opens the property-type breakdown. Choose the indicator to compare, e.g. Months of Supply.
+9. **Pin:** a **Pin button next to the location name**. Pin one area (e.g. City Centre), select another (e.g. West Hillhurst) and both show side by side.
+10. **Menu button → Home icon** goes back to the landing page. **Print (PDF) / CSV export** is on the side controls (transcript, end of video; the visual analysis didn't capture where).
+
 ## Rules for our stats visuals
 
 1. Year-over-year is the headline comparison. Month-over-month only with a seasonality caveat.
