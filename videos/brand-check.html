@@ -1,0 +1,86 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../brand.css">
+<style>
+  #stage { position: relative; width: 1920px; height: 1080px; background: var(--grad-midnight-glow); overflow: hidden; }
+  .eyebrow { position: absolute; left: 96px; top: 84px; font-size: 22px; }
+  #title { position: absolute; left: 92px; top: 112px; font-family: var(--font-display); font-size: 150px; line-height: 1; text-transform: uppercase; }
+  #title .script { font-family: var(--font-script); text-transform: none; color: var(--champagne); font-size: 110px; margin-left: 24px; }
+
+  #swatches { position: absolute; left: 96px; top: 330px; display: grid; grid-template-columns: repeat(4, 240px); gap: 20px; }
+  .sw { height: 160px; border-radius: 16px; padding: 18px 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; color: var(--white); }
+  .sw.dark-ink { color: var(--midnight); }
+  .sw.outlined { box-shadow: inset 0 0 0 2px rgba(255,255,255,.35); }
+  .sw b { font-weight: 900; font-size: 26px; line-height: 1.1; }
+  .sw span { font-weight: 700; font-size: 17px; letter-spacing: .08em; margin-top: 4px; }
+
+  #fonts { position: absolute; left: 1196px; top: 312px; width: 640px; }
+  .f { margin-bottom: 26px; }
+  .f .sample { line-height: 1; }
+  .f .label { font-weight: 700; font-size: 15px; letter-spacing: .22em; text-transform: uppercase; color: var(--light-sky); margin-top: 8px; }
+  #f1 .sample { font-family: var(--font-display); font-size: 118px; }
+  #f2 .sample { font-family: var(--font-script); font-size: 92px; color: var(--champagne); }
+  #f3 .sample { font-family: var(--font-display-alt); font-size: 70px; }
+  #f4 .sample { font-weight: 900; font-size: 60px; }
+  #f4 .sub { font-weight: 400; font-size: 30px; margin-top: 6px; }
+  #f5 .sample { font-family: var(--font-highlight); font-weight: 900; font-size: 64px; color: var(--champagne); }
+
+  .sky-bar { position: absolute; left: 96px; top: 900px; transform-origin: left center; }
+  #foot { position: absolute; left: 96px; top: 930px; font-size: 22px; color: var(--grey); letter-spacing: .04em; }
+</style>
+<div id="stage">
+  <div class="eyebrow">Brand Kit 2026 · Locked Sept 10, 2026</div>
+  <div id="title">Brand Check<span class="script">the kit</span></div>
+
+  <div id="swatches"></div>
+
+  <div id="fonts">
+    <div class="f" id="f1"><div class="sample">REVELIA</div><div class="label">Display · giant words</div></div>
+    <div class="f" id="f2"><div class="sample">Have Heart One</div><div class="label">Script · accents only</div></div>
+    <div class="f" id="f3"><div class="sample">STADIUM</div><div class="label">Secondary display</div></div>
+    <div class="f" id="f4"><div class="sample">Lato Black</div><div class="sub">Lato Regular · body, numbers 403-608-2191</div><div class="label">Body &amp; utility</div></div>
+    <div class="f" id="f5"><div class="sample">DIY · SOLD</div><div class="label">Playfair Display Black · highlight covers</div></div>
+  </div>
+
+  <div class="sky-bar"></div>
+  <div id="foot">Paul Dojcinovic · The Creative Realtor · Brand Kit 2026</div>
+</div>
+<script>
+  window.DURATION = 5;
+  window.SIZE = [1920, 1080];
+
+  const COLORS = [
+    ['Midnight', '#071633', 'outlined'], ['Sky Blue', '#3993D0'], ['Light Sky', '#7FCEFF', 'dark-ink'], ['Royal', '#3B6AAF'],
+    ['Gold', '#C2912E'], ['Champagne', '#F2DF9B', 'dark-ink'], ['BOLD Red', '#E0263B'], ['White', '#FFFFFF', 'dark-ink'],
+    ['Black', '#000000', 'outlined'], ['Navy', '#102749', 'outlined'], ['Grey', '#808080'], ['PD Gradient', 'var(--grad-pd)'],
+  ];
+  const grid = document.getElementById('swatches');
+  for (const [name, val, cls] of COLORS) {
+    const el = document.createElement('div');
+    el.className = 'sw ' + (cls || '');
+    el.style.background = val;
+    el.innerHTML = `<b>${name}</b><span>${val.startsWith('#') ? val : '#7FCEFF → #3B6AAF'}</span>`;
+    grid.appendChild(el);
+  }
+
+  const clamp = x => Math.min(1, Math.max(0, x));
+  const ease = x => 1 - Math.pow(1 - clamp(x), 3); // ease-out cubic
+  const $ = s => document.querySelector(s);
+  const swatches = [...grid.children];
+  const fonts = [...document.querySelectorAll('.f')];
+  const rise = (el, a, px) => { el.style.opacity = a; el.style.transform = `translateY(${(1 - a) * px}px)`; };
+
+  window.render = t => {
+    rise($('.eyebrow'), ease(t / 0.5), 20);
+    rise($('#title'), ease((t - 0.1) / 0.6), 40);
+    swatches.forEach((el, i) => {               // swatches pop in 0.4s-1.8s, left to right
+      const a = ease((t - 0.4 - i * 0.08) / 0.5);
+      el.style.opacity = a;
+      el.style.transform = `scale(${0.85 + 0.15 * a})`;
+    });
+    fonts.forEach((el, i) => rise(el, ease((t - 1.6 - i * 0.18) / 0.6), 30)); // fonts 1.6s-3.3s
+    $('.sky-bar').style.transform = `scaleX(${ease((t - 2.8) / 0.7)})`;
+    rise($('#foot'), ease((t - 3.0) / 0.6), 12);
+  };
+  window.render(0);
+</script>

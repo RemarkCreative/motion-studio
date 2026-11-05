@@ -1,18 +1,77 @@
-/* Brand colors and fonts. Placeholder values: swap in your real brand. */
-:root {
-  --brand-bg: #0b1320;      /* background */
-  --brand-ink: #f5f3ee;     /* main text */
-  --brand-accent: #d4a24c;  /* highlight / accent */
-  --brand-muted: #8a94a6;   /* secondary text */
+/* Paul Dojcinovic · The Creative Realtor · Brand Kit 2026 (locked Sept 10, 2026)
+   Primary direction: V4 Impact Poster. Source: Paul-Brand-Style-Guide-2026.pdf
 
-  --font-display: "Inter Display", "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
+   RULES (from the guide)
+   - V4 Impact = Midnight radial ground + champagne gold type + ONE red hit per piece
+     (BOLD, a tag, a CTA button, or the RESULTS! box).
+   - One giant Revelia word per piece. Script (Have Heart One) only on the accent:
+     "Creative", "Auto-Magically!", first status word (Just / Open), Title-Case red tags.
+     Never a whole line in script. Never Have Heart Two.
+   - Lockup: THE / REALTOR in Lato Black caps; only "Creative" in script
+     (gold on dark, red on Midnight Bold, sky on Minimal).
+   - RESULTS! is always white type in a red box (sky box on Modern Minimal).
+   - Numbers always in Lato by weight, never mono. Eyebrows: Lato, letter-spaced caps.
+   - Playfair Display Black: highlight covers only.
+   - Sky gradient is the "breather": 1-2 pieces per series so the feed isn't all dark.
+   - Sparkles are the only "magic" element. No magic wands.
+   - PD watermark centred, fully inside the frame. Signature + LPT circle in every footer.
+   - Compliance line near the CTA / last slide (--compliance below).
+   - Don't invent stories, quotes or stats. No licence number in marketing.
+*/
+
+/* Free Google Fonts (OFL), committed in fonts/ */
+@font-face { font-family: "Lato"; font-weight: 400; src: url(fonts/Lato-Regular.ttf); }
+@font-face { font-family: "Lato"; font-weight: 700; src: url(fonts/Lato-Bold.ttf); }
+@font-face { font-family: "Lato"; font-weight: 900; src: url(fonts/Lato-Black.ttf); }
+@font-face { font-family: "Playfair Display"; font-weight: 900; src: url(fonts/PlayfairDisplay-Black.ttf); }
+
+/* Paid fonts: local only, never committed (see .gitignore) */
+@font-face { font-family: "Revelia"; src: url(fonts/Revelia.otf); }
+@font-face { font-family: "Revelia Slanted"; src: url(fonts/Revelia-Slanted.otf); }
+@font-face { font-family: "Have Heart One"; src: url(fonts/HaveHeartOne.otf); }
+@font-face { font-family: "Stadium"; src: url(fonts/Stadium.ttf); }
+
+:root {
+  /* Impact palette */
+  --midnight: #071633;    /* ground of V4 Impact / V2 */
+  --sky: #3993D0;         /* signature accent */
+  --light-sky: #7FCEFF;   /* top of the PD gradient */
+  --royal: #3B6AAF;       /* bottom of the PD gradient */
+  --gold: #C2912E;        /* "Creative", luxury moments */
+  --champagne: #F2DF9B;   /* gold on dark backgrounds */
+  --bold-red: #E0263B;    /* one hit per piece */
+  --white: #FFFFFF;       /* V1/V3 ground, type on dark */
+  --black: #000000;       /* signature on white */
+  --navy: #102749;        /* trust / family content */
+  --grey: #808080;        /* secondary text */
+
+  /* Blended gradients */
+  --grad-pd: linear-gradient(160deg, var(--light-sky) 0%, var(--sky) 55%, var(--royal) 100%);
+  --grad-sky-bar: linear-gradient(90deg, var(--light-sky), var(--royal));
+  --grad-midnight-glow: radial-gradient(ellipse 70% 70% at 50% 40%, #1B4A90 0%, #0E2C5E 45%, var(--midnight) 100%);
+
+  /* Type stack */
+  --font-display: "Revelia", "Lato", sans-serif;          /* giant words, status words */
+  --font-display-slanted: "Revelia Slanted", "Revelia", sans-serif;
+  --font-script: "Have Heart One", cursive;                /* accents only */
+  --font-display-alt: "Stadium", "Revelia", sans-serif;    /* alt headlines when Revelia is on the page */
+  --font-body: "Lato", sans-serif;                         /* body, numbers, contact, eyebrows */
+  --font-highlight: "Playfair Display", serif;             /* highlight covers only */
+
+  --compliance: "Paul Dojcinovic | AI Marketing & Realtor at LPT Realty";
 }
 
 html, body {
   margin: 0;
   overflow: hidden;
-  background: var(--brand-bg);
-  color: var(--brand-ink);
+  background: var(--midnight);
+  color: var(--white);
   font-family: var(--font-body);
 }
+
+/* Tracked Lato eyebrow, e.g. "CALGARY SELLERS" */
+.eyebrow { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; color: var(--sky); }
+/* Sky gradient bar divider */
+.sky-bar { height: 6px; width: 190px; border-radius: 3px; background: var(--grad-sky-bar); }
+/* RESULTS! box: white type in a red box */
+.results-box { display: inline-block; background: var(--bold-red); color: var(--white); font-weight: 900; letter-spacing: 0.08em; padding: 0.2em 0.6em; border-radius: 0.2em; }

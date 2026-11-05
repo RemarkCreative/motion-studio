@@ -1,1 +1,6 @@
 out/*.png
+# Paid brand fonts: licensed to Paul, never publish them in this public repo
+fonts/*.otf
+fonts/Stadium*
+fonts/Revelia*
+fonts/HaveHeart*
