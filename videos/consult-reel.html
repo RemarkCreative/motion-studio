@@ -1,0 +1,251 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../brand.css">
+<!-- Vertical Reel/Story: book a free buyer or seller strategy call (Calgary).
+     V4 Impact: midnight glow, champagne script accents, one giant Revelia word
+     and at most one red hit on screen at a time. Copy uses only facts from the brand guide. -->
+<style>
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--midnight); }
+  #glow { position: absolute; inset: -300px; background: var(--grad-midnight-glow); }
+  .scene { position: absolute; inset: 0; visibility: hidden; transform-origin: 50% 45%; }
+  .center { position: absolute; left: 0; right: 0; text-align: center; }
+  .eyebrow { font-size: 30px; letter-spacing: .32em; }
+  .giant { font-family: var(--font-display); text-transform: uppercase; line-height: .9; color: var(--white); }
+  .script { font-family: var(--font-script); color: var(--champagne); line-height: 1; }
+  .lato-black { font-weight: 900; }
+  .body { font-size: 44px; line-height: 1.35; color: var(--white); }
+  .bar { height: 8px; width: 240px; border-radius: 4px; background: var(--grad-sky-bar); margin: 0 auto; transform-origin: center; }
+  .red-tag { font-family: var(--font-script); color: var(--bold-red); line-height: 1; }
+  .spark { position: absolute; width: 60px; height: 60px; }
+
+  /* 1 · hook */
+  #s1 .eyebrow { top: 560px; }
+  #s1 > .script { position: absolute; left: 120px; top: 585px; font-size: 140px; transform: rotate(-7deg); z-index: 2; }
+  #s1 .giant { top: 720px; font-size: 330px; }
+  #s1 .bar { position: absolute; left: 420px; top: 1060px; }
+  #s1 .body { top: 1110px; font-size: 34px; color: var(--light-sky); }
+
+  /* 2 · tagline */
+  #s2 .l1 { top: 600px; font-size: 64px; }
+  #s2 .l2 { top: 690px; font-size: 300px; }
+  #s2 .l3 { top: 960px; font-size: 170px; }
+  #s2 .script { top: 1140px; font-size: 150px; }
+
+  /* 3 · I CREATE */
+  #s3 .lockup { top: 360px; font-size: 54px; letter-spacing: .04em; }
+  #s3 .lockup .script { font-size: 84px; vertical-align: -6px; margin: 0 10px; }
+  #s3 .giant { top: 470px; font-size: 250px; }
+  #s3 ul { position: absolute; left: 250px; top: 760px; margin: 0; padding: 0; list-style: none; }
+  #s3 li { font-weight: 900; font-size: 68px; line-height: 1.32; }
+  #s3 li .chev { color: var(--sky); margin-right: 22px; }
+  #s3 .results-box { font-size: 64px; }
+
+  /* 4 · sellers + buyers */
+  .card { position: absolute; left: 80px; width: 920px; box-sizing: border-box; padding: 44px 56px 50px;
+          border-radius: 28px; background: rgba(127, 206, 255, .07); box-shadow: inset 0 0 0 2px rgba(127, 206, 255, .28); }
+  .card .eyebrow { font-size: 26px; }
+  .card .giant { font-size: 190px; margin: 18px 0 14px; }
+  .card .body { font-size: 40px; }
+  #sell { top: 330px; }
+  #buy { top: 1000px; }
+  #buy .red-tag { position: absolute; right: 70px; top: 150px; font-size: 96px; transform: rotate(-8deg); }
+
+  /* 5 · 21+ years */
+  #s5 .eyebrow { top: 520px; }
+  #s5 .num { top: 590px; font-weight: 900; font-size: 420px; line-height: 1; color: var(--white); }
+  #s5 .red-tag { position: absolute; left: 600px; top: 930px; font-size: 150px; transform: rotate(-8deg); }
+  #s5 .body { top: 1130px; padding: 0 110px; }
+
+  /* 6 · CTA */
+  #s6 .eyebrow { top: 300px; }
+  #s6 > .script { position: absolute; left: 150px; top: 365px; font-size: 150px; transform: rotate(-7deg); z-index: 2; }
+  #s6 .giant { top: 450px; font-size: 330px; }
+  #s6 .body { top: 790px; padding: 0 120px; }
+  #cta { position: absolute; left: 110px; width: 860px; top: 990px; box-sizing: border-box; padding: 38px 30px;
+         border-radius: 18px; background: var(--bold-red); color: var(--white); text-align: center;
+         font-weight: 900; font-size: 38px; letter-spacing: .04em; white-space: nowrap; box-shadow: 0 18px 50px rgba(224, 38, 59, .35); }
+  #s6 .link { top: 1140px; font-size: 30px; letter-spacing: .3em; color: var(--light-sky); font-weight: 700; }
+  #s6 .contact { top: 1250px; font-size: 44px; font-weight: 700; line-height: 1.45; }
+  #s6 .bar { position: absolute; left: 420px; top: 1420px; }
+  #s6 .lockup { top: 1460px; font-size: 40px; letter-spacing: .04em; }
+  #s6 .lockup .script { font-size: 62px; vertical-align: -4px; margin: 0 8px; }
+  #s6 .compliance { top: 1550px; font-size: 26px; color: var(--grey); letter-spacing: .03em; }
+</style>
+
+<div id="stage">
+  <div id="glow"></div>
+
+  <div class="scene" id="s1">
+    <div class="center eyebrow">Calgary Buyers &amp; Sellers</div>
+    <div class="script">Are you</div>
+    <div class="center giant">Ready?</div>
+    <div class="bar"></div>
+    <div class="center body">Selling · Moving up · Downsizing · Buying new · Relocating</div>
+  </div>
+
+  <div class="scene" id="s2">
+    <div class="center lato-black l1">Taking the stress out of</div>
+    <div class="center giant l2">Calgary</div>
+    <div class="center giant l3">Real Estate…</div>
+    <div class="center script">Auto-Magically!</div>
+  </div>
+
+  <div class="scene" id="s3">
+    <div class="center lato-black lockup">THE<span class="script">Creative</span>REALTOR</div>
+    <div class="center giant">I Create:</div>
+    <ul>
+      <li><span class="chev">›</span>Opportunities</li>
+      <li><span class="chev">›</span>AI Marketing</li>
+      <li><span class="chev">›</span>Solutions</li>
+      <li><span class="chev">›</span>Wealth</li>
+      <li><span class="chev">›</span>Strategy</li>
+      <li><span class="chev">›</span><span class="results-box">RESULTS!</span></li>
+    </ul>
+  </div>
+
+  <div class="scene" id="s4">
+    <div class="card" id="sell">
+      <div class="eyebrow">Calgary Sellers</div>
+      <div class="giant">Sellers</div>
+      <div class="body">Your sale, positioned for max value with AI-powered marketing, and negotiated hard.</div>
+    </div>
+    <div class="card" id="buy">
+      <div class="eyebrow">Calgary Buyers</div>
+      <div class="giant">Buyers</div>
+      <div class="red-tag">Smart Move</div>
+      <div class="body">Lake communities, new builds, estate homes and investment deals, with a clear plan to win.</div>
+    </div>
+  </div>
+
+  <div class="scene" id="s5">
+    <div class="center eyebrow">Calgary Realtor · LPT Realty</div>
+    <div class="center num">21+</div>
+    <div class="red-tag">Years</div>
+    <div class="center body">Helping Calgary buyers and sellers through every market cycle. Award-winning at every brokerage since 2005.</div>
+  </div>
+
+  <div class="scene" id="s6">
+    <div class="center eyebrow">Buyer or Seller Consultation</div>
+    <div class="script">Let's</div>
+    <div class="center giant">Talk.</div>
+    <div class="center body">Start with a free 15-minute strategy call. A clear plan. No pressure, no fluff.</div>
+    <div id="cta">BOOK A FREE 15-MIN STRATEGY CALL</div>
+    <div class="center link">LINK IN BIO</div>
+    <div class="center contact">403-608-2191 · 403realestate.com<br>@PaulyD_YYC</div>
+    <div class="bar"></div>
+    <div class="center lato-black lockup">THE<span class="script">Creative</span>REALTOR</div>
+    <div class="center compliance">Paul Dojcinovic | AI Marketing &amp; Realtor at LPT Realty</div>
+  </div>
+</div>
+
+<script>
+  window.DURATION = 24;
+  window.SIZE = [1080, 1920];
+
+  // Scene windows in seconds.
+  const S = [[0, 3.4], [3.4, 7.2], [7.2, 11.8], [11.8, 16.2], [16.2, 19.4], [19.4, 24]];
+
+  const clamp = x => Math.min(1, Math.max(0, x));
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+  const back = x => { x = clamp(x); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const q = (s, root = document) => root.querySelector(s);
+  const scenes = [...document.querySelectorAll('.scene')];
+
+  const rise = (el, p, px = 50) => { el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * px}px)`; };
+  const reveal = (el, p) => { el.style.clipPath = `inset(-30% ${(1 - p) * 100}% -30% -5%)`; }; // left-to-right write-on
+  const zoomIn = (el, p, from = 1.18) => { el.style.opacity = p; el.style.transform = `scale(${from - (from - 1) * p})`; };
+
+  // Sparkles: the only "magic" element.
+  const STAR = '<svg viewBox="-10 -10 20 20" width="100%" height="100%"><path d="M0-10C1-2 2-1 10 0C2 1 1 2 0 10C-1 2-2 1-10 0C-2-1-1-2 0-10Z" fill="#F2DF9B"/></svg>';
+  const SPARKS = [[860, 1120, 1.0, 0], [930, 1230, 0.55, 1.3], [170, 1170, 0.7, 2.1], [800, 650, 0.6, 0.7]];
+  const s2 = q('#s2');
+  const sparkEls = SPARKS.map(([x, y, size]) => {
+    const el = document.createElement('div');
+    el.className = 'spark'; el.innerHTML = STAR;
+    el.style.left = x + 'px'; el.style.top = y + 'px';
+    el.style.width = el.style.height = 60 * size + 'px';
+    s2.appendChild(el);
+    return el;
+  });
+
+  window.render = t => {
+    // Slow drifting glow behind everything.
+    q('#glow').style.transform = `translate(${Math.sin(t * 0.35) * 70}px, ${Math.cos(t * 0.27) * 110}px)`;
+
+    scenes.forEach((el, i) => {
+      const [a, b] = S[i], last = i === S.length - 1;
+      const vin = ease(seg(t, a, a + 0.35)), vout = last ? 0 : ease(seg(t, b - 0.3, b));
+      el.style.visibility = t >= a && (last || t < b) ? 'visible' : 'hidden';
+      el.style.opacity = vin * (1 - vout);
+      el.style.transform = `scale(${1 + 0.06 * vout})`;
+    });
+
+    // 1 · hook
+    let l = t - S[0][0], s = q('#s1');
+    rise(q('.eyebrow', s), ease(seg(l, 0.1, 0.6)), 30);
+    zoomIn(q('.giant', s), ease(seg(l, 0.2, 0.9)));
+    reveal(q(':scope > .script', s), seg(l, 0.8, 1.6));
+    q('.bar', s).style.transform = `scaleX(${ease(seg(l, 1.3, 2.0))})`;
+    rise(q('.body', s), ease(seg(l, 1.6, 2.3)), 30);
+
+    // 2 · tagline
+    l = t - S[1][0];
+    rise(q('.l1', s2), ease(seg(l, 0.1, 0.6)));
+    zoomIn(q('.l2', s2), ease(seg(l, 0.3, 1.0)));
+    rise(q('.l3', s2), ease(seg(l, 0.6, 1.2)), 70);
+    reveal(q('.script', s2), seg(l, 1.2, 2.1));
+    sparkEls.forEach((el, i) => {
+      const [, , , phase] = SPARKS[i];
+      const on = ease(seg(l, 1.8 + i * 0.15, 2.3 + i * 0.15));
+      const tw = 0.75 + 0.25 * Math.sin((l + phase) * 5);
+      el.style.opacity = on * (0.6 + 0.4 * tw);
+      el.style.transform = `scale(${on * tw}) rotate(${l * 40}deg)`;
+    });
+
+    // 3 · I CREATE
+    l = t - S[2][0]; s = q('#s3');
+    rise(q('.lockup', s), ease(seg(l, 0.1, 0.6)), 30);
+    zoomIn(q('.giant', s), ease(seg(l, 0.3, 1.0)));
+    [...s.querySelectorAll('li')].forEach((li, i) => {
+      const p = ease(seg(l, 1.0 + i * 0.35, 1.5 + i * 0.35));
+      li.style.opacity = p; li.style.transform = `translateX(${(1 - p) * -80}px)`;
+    });
+    const rb = q('.results-box', s); // last item pops for emphasis
+    rb.style.display = 'inline-block';
+    rb.style.transform = `scale(${0.6 + 0.4 * back(seg(l, 2.75, 3.25))})`;
+
+    // 4 · sellers + buyers
+    l = t - S[3][0]; s = q('#s4');
+    const ps = ease(seg(l, 0.1, 0.8)), pb = ease(seg(l, 1.4, 2.1));
+    q('#sell').style.opacity = ps; q('#sell').style.transform = `translateX(${(1 - ps) * -140}px)`;
+    q('#buy').style.opacity = pb; q('#buy').style.transform = `translateX(${(1 - pb) * 140}px)`;
+    reveal(q('#buy .red-tag'), seg(l, 2.3, 3.0));
+
+    // 5 · 21+ years
+    l = t - S[4][0]; s = q('#s5');
+    rise(q('.eyebrow', s), ease(seg(l, 0.0, 0.5)), 30);
+    const pc = ease(seg(l, 0.1, 1.2));
+    q('.num', s).textContent = Math.round(21 * pc) + '+';
+    zoomIn(q('.num', s), ease(seg(l, 0.1, 0.6)), 1.1);
+    reveal(q('.red-tag', s), seg(l, 1.0, 1.6));
+    rise(q('.body', s), ease(seg(l, 1.3, 2.0)), 30);
+
+    // 6 · CTA
+    l = t - S[5][0]; s = q('#s6');
+    rise(q('.eyebrow', s), ease(seg(l, 0.0, 0.5)), 30);
+    zoomIn(q('.giant', s), ease(seg(l, 0.2, 0.9)));
+    reveal(q(':scope > .script', s), seg(l, 0.7, 1.4));
+    rise(q('.body', s), ease(seg(l, 1.0, 1.6)), 30);
+    const pcta = back(seg(l, 1.5, 2.1));
+    const pulse = l > 2.4 ? 1 + 0.025 * Math.sin((l - 2.4) * 4) : 1;
+    q('#cta').style.opacity = clamp(pcta);
+    q('#cta').style.transform = `scale(${(0.7 + 0.3 * pcta) * pulse})`;
+    rise(q('.link', s), ease(seg(l, 2.0, 2.5)), 20);
+    rise(q('.contact', s), ease(seg(l, 2.3, 2.9)), 20);
+    q('.bar', s).style.transform = `scaleX(${ease(seg(l, 2.7, 3.3))})`;
+    rise(q('.lockup', s), ease(seg(l, 2.9, 3.4)), 20);
+    rise(q('.compliance', s), ease(seg(l, 3.1, 3.6)), 12);
+  };
+  window.render(0);
+</script>

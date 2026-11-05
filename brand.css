@@ -28,6 +28,7 @@
 /* Paid fonts: local only, never committed (see .gitignore) */
 @font-face { font-family: "Revelia"; src: url(fonts/Revelia.otf); }
 @font-face { font-family: "Revelia Slanted"; src: url(fonts/Revelia-Slanted.otf); }
+@font-face { font-family: "Revelia Soft"; src: url(fonts/Revelia-Soft.otf); }
 @font-face { font-family: "Have Heart One"; src: url(fonts/HaveHeartOne.otf); }
 @font-face { font-family: "Stadium"; src: url(fonts/Stadium.ttf); }
 
@@ -51,7 +52,7 @@
   --grad-midnight-glow: radial-gradient(ellipse 70% 70% at 50% 40%, #1B4A90 0%, #0E2C5E 45%, var(--midnight) 100%);
 
   /* Type stack */
-  --font-display: "Revelia", "Lato", sans-serif;          /* giant words, status words */
+  --font-display: "Revelia", "Revelia Soft", "Lato", sans-serif; /* giant words, status words */
   --font-display-slanted: "Revelia Slanted", "Revelia", sans-serif;
   --font-script: "Have Heart One", cursive;                /* accents only */
   --font-display-alt: "Stadium", "Revelia", sans-serif;    /* alt headlines when Revelia is on the page */
