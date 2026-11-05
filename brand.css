@@ -1,0 +1,18 @@
+/* Brand colors and fonts. Placeholder values: swap in your real brand. */
+:root {
+  --brand-bg: #0b1320;      /* background */
+  --brand-ink: #f5f3ee;     /* main text */
+  --brand-accent: #d4a24c;  /* highlight / accent */
+  --brand-muted: #8a94a6;   /* secondary text */
+
+  --font-display: "Inter Display", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--brand-bg);
+  color: var(--brand-ink);
+  font-family: var(--font-body);
+}
